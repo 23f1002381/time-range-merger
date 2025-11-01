@@ -1,153 +1,104 @@
 # Time Range Merger
 
-A Node.js module for merging time ranges with a specified threshold. This utility helps in processing time-based data by merging ranges that are either overlapping or within a specified threshold of each other.
+Hi there! 👋 I'm Nishant K Y, a passionate developer who loves solving interesting problems. This is my solution for the Time Range Merger assignment.
 
-## 🚀 Quick Start
+## About This Project
 
-### Prerequisites
-- Node.js (v14 or higher)
+I created this utility to merge time ranges that are either overlapping or within a specified threshold. It's been a great learning experience in algorithm design and Node.js development. The solution handles various edge cases and is optimized for performance.
+
+## Getting Started
+
+### What You'll Need
+- Node.js (I'm using v14+)
 - npm (comes with Node.js)
-- Git (for cloning the repository)
+- Git (for cloning the repo)
 
-## 📥 Installation
+### Quick Setup
 
-### Option 1: Using Git (Recommended)
-
-1. **Clone the repository**:
+1. **Get the code**
    ```bash
    git clone https://github.com/23f1002381/time-range-merger.git
    cd time-range-merger
    ```
 
-2. **Verify installation**:
+2. **Verify your setup**
    ```bash
    node -v
    npm -v
    ```
 
-### Option 2: Direct Download
-1. Download the repository as a ZIP file from [GitHub](https://github.com/23f1002381/time-range-merger/archive/refs/heads/main.zip)
-2. Extract the ZIP file
-3. Open a terminal in the extracted directory
+## How to Use
 
-## 🏃‍♂️ Running the Program
-
-### Method 1: Run the Test Suite
+### Running the Tests
+I've included test cases to show how it works:
 ```bash
-# Run all test cases
 node test.js
 ```
 
-### Method 2: Create Your Own Script
-1. Create a new JavaScript file (e.g., `myRanges.js`)
-2. Add your code:
-   ```javascript
-   const { mergeTimeRanges } = require('./timeRangeMerger');
+### Example Usage
+Here's a quick example of how you can use this in your project:
 
-   // Example usage
-   const ranges = [
-     [1000, 2000],
-     [2500, 4000],
-     [3900, 4100],
-     [8000, 9000],
-     [9050, 9500]
-   ];
-   
-   const threshold = 200;
-   console.log(mergeTimeRanges(ranges, threshold));
-   ```
-3. Run your script:
-   ```bash
-   node myRanges.js
-   ```
-   Expected output:
-   ```
-   [ [ 1000, 2000 ], [ 2500, 4100 ], [ 8000, 9500 ] ]
-   ```
-
-## 🧪 Testing
-
-Run the included test suite to verify everything works:
-
-```bash
-# Run tests
-node test.js
-
-# Expected output:
-# Test Case 1: PASS
-# Test Case 2: PASS
-# Test Case 3: PASS
-# Edge Case: PASS
-```
-
-## 📚 Usage Examples
-
-### Basic Usage
 ```javascript
 const { mergeTimeRanges } = require('./timeRangeMerger');
 
-// Merge ranges with 200ms threshold
-const result = mergeTimeRanges(
-  [
-    [1000, 2000],
-    [2500, 4000],
-    [8000, 9000]
-  ],
-  200
-);
-```
-
-### Real-world Example
-```javascript
-// Convert timestamps to milliseconds
-const ranges = [
-  [Date.parse('2023-01-01T10:00:00'), Date.parse('2023-01-01T11:00:00')],
-  [Date.parse('2023-01-01T10:30:00'), Date.parse('2023-01-01T12:00:00')]
+// My test case
+const meetingTimes = [
+  [1000, 2000],  // 10:00 AM - 10:20 AM
+  [2500, 4000],  // 10:25 AM - 10:40 AM
+  [3900, 4100]   // 10:39 AM - 10:41 AM (overlaps with previous)
 ];
 
-// Merge if gap is less than 15 minutes (900000 ms)
-const merged = mergeTimeRanges(ranges, 15 * 60 * 1000);
+// Merge if meetings are within 5 minutes (300000ms) of each other
+const mergedSchedule = mergeTimeRanges(meetingTimes, 5 * 60 * 1000);
+console.log(mergedSchedule);
 ```
 
-## 📖 API Reference
+## The Problem I Solved
 
-### `mergeTimeRanges(ranges, threshold)`
+I was challenged to create a function that merges time ranges with these requirements:
+- Handle overlapping time ranges
+- Merge ranges that are close to each other (within a threshold)
+- Work with unsorted input
+- Be efficient and clean
 
-Merges time ranges that are either overlapping or within the specified threshold.
+## How It Works
 
-**Parameters:**
-- `ranges`: Array of `[start, end]` time ranges in milliseconds
-- `threshold`: Max gap (ms) between ranges to still merge them
+The solution:
+1. Sorts the input ranges by start time
+2. Iterates through the ranges, merging them if they overlap or are within the threshold
+3. Handles edge cases like empty input or single ranges
 
-**Returns:** Array of merged ranges
+## Testing
 
-## 🔍 Edge Cases Handled
+I've included comprehensive test cases that cover:
+- Basic merging
+- Edge cases (empty input, single range)
+- Different threshold values
+- Overlapping and non-overlapping ranges
 
-- ✅ Empty input array returns `[]`
-- ✅ Single range returns as is
-- ✅ Overlapping ranges are merged
-- ✅ Ranges within threshold are merged
-- ✅ Unsorted input is handled correctly
+Run the tests with:
+```bash
+node test.js
+```
 
-## 🤝 Contributing
+## Why I'm Proud of This
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some feature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+- Clean, readable code with good documentation
+- Handles all edge cases
+- Efficient O(n log n) time complexity
+- Practical real-world applications (like calendar scheduling)
 
-## 📄 License
+## Let's Connect!
 
-Distributed under the MIT License. See `LICENSE` for more information.
+I'm always open to feedback and collaboration. Feel free to reach out:
+- Email: [nishantkumar.sv345@gmail.com](mailto:nishantkumar.sv345@gmail.com)
+- LinkedIn: [Nishant K Y](https://linkedin.com/in/yourprofile)
+- GitHub: [@23f1002381](https://github.com/23f1002381)
 
-## 📬 Contact
+## License
 
-Your Name - [@your_handle](https://twitter.com/your_handle) - your.email@example.com  
-Project Link: [https://github.com/23f1002381/time-range-merger](https://github.com/23f1002381/time-range-merger)
+This project is open source and available under the MIT License.
 
 ---
 
-<div align="center">
-  Made with ❤️ by Your Name
-</div>
+Made with ❤️ by Nishant K Y
